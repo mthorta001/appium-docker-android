@@ -99,6 +99,8 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
     exit 0 && \
+    npm i -g opencv4nodejs && \
+    exit 0 && \
     npm cache clean && \
     apt-get remove --purge -y npm && \
     apt-get autoremove --purge -y && \

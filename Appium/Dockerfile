@@ -96,7 +96,10 @@ RUN wget --no-check-certificate https://github.com/Kitware/CMake/releases/downlo
     tar -zxvf cmake-3.20.0.tar.gz && \
     ~/cmake-3.20.0/bootstrap && \
     make && \
-    make install \
+    make install && \
+    rm -rf ~/cmake-3.20.0 && \
+    rm -rf ~/cmake-3.20.0.tar.gz && \
+    echo cmake --version
 
 #====================================
 # Install latest nodejs, npm, appium

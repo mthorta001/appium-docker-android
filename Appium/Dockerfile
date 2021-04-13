@@ -50,6 +50,9 @@ RUN apt-get -qqy update && \
     wget \
     libqt5webkit5 \
     libgconf-2-4 \
+    build-essential \
+    libssl-dev \
+    git \
     xvfb \
     gnupg \
     salt-minion \
@@ -65,8 +68,8 @@ ENV JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre" \
 # Install Android SDK
 #=====================
 ARG SDK_VERSION=sdk-tools-linux-3859397
-ARG ANDROID_BUILD_TOOLS_VERSION=26.0.0
-ARG ANDROID_PLATFORM_VERSION="android-25"
+ARG ANDROID_BUILD_TOOLS_VERSION=30.0.0
+ARG ANDROID_PLATFORM_VERSION="android-29"
 
 ENV SDK_VERSION=$SDK_VERSION \
     ANDROID_BUILD_TOOLS_VERSION=$ANDROID_BUILD_TOOLS_VERSION \
@@ -88,6 +91,13 @@ RUN mkdir -p ~/.android && \
 
 ENV PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools
 
+# install cmake
+RUN wget --no-check-certificate https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz && \
+    tar -zxvf cmake-3.20.0.tar.gz && \
+    ~/cmake-3.20.0/bootstrap && \
+    make && \
+    make install \
+
 #====================================
 # Install latest nodejs, npm, appium
 # Using this workaround to install Appium -> https://github.com/appium/appium/issues/10020 -> Please remove this workaround asap
@@ -99,7 +109,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
     exit 0 && \
-    npm i -g opencv4nodejs && \
+    npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \
     exit 0 && \
     npm cache clean && \
     apt-get remove --purge -y npm && \

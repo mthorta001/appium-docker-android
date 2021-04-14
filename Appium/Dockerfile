@@ -92,14 +92,15 @@ RUN mkdir -p ~/.android && \
 ENV PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools
 
 # install cmake
-RUN wget --no-check-certificate https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz && \
+RUN mkdir ~/tmp && \
+    cd ~/tmp && \
+    wget --no-check-certificate https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz && \
     tar -zxvf cmake-3.20.0.tar.gz && \
-    ~/cmake-3.20.0/bootstrap && \
+    cd cmake-3.20.0 && \
+    ./bootstrap && \
     make && \
     make install && \
-    rm -rf ~/cmake-3.20.0 && \
-    rm -rf ~/cmake-3.20.0.tar.gz && \
-    echo cmake --version
+    rm -rf ~/tmp
 
 #====================================
 # Install latest nodejs, npm, appium
@@ -111,7 +112,6 @@ ENV APPIUM_VERSION=$APPIUM_VERSION
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
-    exit 0 && \
     npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \
     exit 0 && \
     npm cache clean && \

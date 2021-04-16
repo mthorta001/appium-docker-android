@@ -126,8 +126,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
 ARG ATD_VERSION=1.2
 ENV ATD_VERSION=$ATD_VERSION
 RUN wget -nv -O RemoteAppiumManager.jar "https://github.com/AppiumTestDistribution/ATD-Remote/releases/download/${ATD_VERSION}/RemoteAppiumManager-${ATD_VERSION}.jar" && \
-    npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \
-    exit 0
+    npm i -g opencv4nodejs --unsafe-perm=true --allow-root
 
 #==================================
 # Fix Issue with timezone mismatch

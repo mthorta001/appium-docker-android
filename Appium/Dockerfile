@@ -75,12 +75,12 @@ ENV SDK_VERSION=$SDK_VERSION \
     ANDROID_BUILD_TOOLS_VERSION=$ANDROID_BUILD_TOOLS_VERSION \
     ANDROID_HOME=/root
 
-RUN wget -O tools.zip https://dl.google.com/android/repository/${SDK_VERSION}.zip && \
+RUN wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip && \
     unzip tools.zip && rm tools.zip && \
     chmod a+x -R $ANDROID_HOME && \
     chown -R root:root $ANDROID_HOME
 
-ENV PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
+ENV PATH=$PATH:$ANDROID_HOME/bin
 
 # https://askubuntu.com/questions/885658/android-sdk-repositories-cfg-could-not-be-loaded
 RUN mkdir -p ~/.android && \

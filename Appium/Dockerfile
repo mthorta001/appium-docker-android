@@ -86,7 +86,7 @@ RUN mkdir -p ~/.android && \
     touch ~/.android/repositories.cfg && \
     echo y | sdkmanager "platform-tools" --sdk_root=/root && \
 
-ENV PATH=$PATH:$ANDROID_HOME/platform-tools
+ENV PATH=$PATH:/root/platform-tools
 
 # install cmake
 RUN mkdir ~/tmp && \

@@ -26,6 +26,7 @@ jobs:
           image: rcswain/appium
           tags: ${{ env.tag }}, latest
           registry: docker.io
+          dockerfile: Appium/Dockerfile
           username: ${{ env.username }}
           password: ${{ env.password }}
           buildArgs: BASE_IMAGE=ubuntu-20.04, SDK_VERSION=31.0.0, ANDROID_PLATFORM_VERSION=android-31, APPIUM_VERSION=1.22.0, ATD_VERSION=1.2

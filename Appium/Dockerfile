@@ -55,7 +55,6 @@ RUN apt-get -qqy update && \
     git \
     xvfb \
     gnupg \
-    salt-minion \
   && rm -rf /var/lib/apt/lists/*
 
 #===============

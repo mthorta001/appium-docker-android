@@ -73,7 +73,7 @@ ARG ANDROID_PLATFORM_VERSION="android-29"
 
 ENV SDK_VERSION=$SDK_VERSION \
     ANDROID_BUILD_TOOLS_VERSION=$ANDROID_BUILD_TOOLS_VERSION \
-    ANDROID_HOME=/root
+    ANDROID_HOME=/root/cmdline-tools
 
 RUN wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip && \
     unzip tools.zip && rm tools.zip && \

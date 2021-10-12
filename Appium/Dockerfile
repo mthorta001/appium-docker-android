@@ -117,46 +117,8 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean
 
-#================================
-# APPIUM Test Distribution (ATD)
-#================================
-ARG ATD_VERSION=1.2
-ENV ATD_VERSION=$ATD_VERSION
-RUN wget -nv -O RemoteAppiumManager.jar "https://github.com/AppiumTestDistribution/ATD-Remote/releases/download/${ATD_VERSION}/RemoteAppiumManager-${ATD_VERSION}.jar" && \
-    npm i -g opencv4nodejs --unsafe-perm=true --allow-root
-
 #==================================
 # Fix Issue with timezone mismatch
 #==================================
 ENV TZ="US/Pacific"
 RUN echo "${TZ}" > /etc/timezone
-
-#===============
-# Expose Ports
-#---------------
-# 4723
-#   Appium port
-# 4567
-#   ATD port
-#===============
-EXPOSE 4723
-EXPOSE 4567
-
-#====================================================
-# Scripts to run appium and connect to Selenium Grid
-#====================================================
-COPY entry_point.sh \
-     generate_config.sh \
-     wireless_connect.sh \
-     wireless_autoconnect.sh \
-     /root/
-
-RUN chmod +x /root/entry_point.sh && \
-    chmod +x /root/generate_config.sh && \
-    chmod +x /root/wireless_connect.sh && \
-    chmod +x /root/wireless_autoconnect.sh
-
-#========================================
-# Run xvfb and appium server
-#========================================
-CMD /root/wireless_autoconnect.sh && /root/entry_point.sh

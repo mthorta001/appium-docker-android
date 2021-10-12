@@ -84,7 +84,7 @@ ENV PATH=$PATH:$ANDROID_HOME/bin
 # https://askubuntu.com/questions/885658/android-sdk-repositories-cfg-could-not-be-loaded
 RUN mkdir -p ~/.android && \
     touch ~/.android/repositories.cfg && \
-    echo y | sdkmanager "platform-tools" && \
+    echo y | sdkmanager "platform-tools" --sdk_root=/root && \
     echo y | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" && \
     echo y | sdkmanager "platforms;$ANDROID_PLATFORM_VERSION"
 

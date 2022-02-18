@@ -81,7 +81,7 @@ RUN wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-
     chmod a+x -R $ANDROID_HOME && \
     chown -R root:root $ANDROID_HOME
 
-ENV PATH=$PATH:/root/cmdline-tools/bin
+ENV PATH=$PATH:/root/cmdline-tools/tools/bin
 
 # https://askubuntu.com/questions/885658/android-sdk-repositories-cfg-could-not-be-loaded
 RUN mkdir -p ~/.android && \

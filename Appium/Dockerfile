@@ -76,11 +76,13 @@ ENV SDK_VERSION=$SDK_VERSION \
 
 RUN wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip && \
     unzip tools.zip && rm tools.zip && \
-    mv ~/cmdline-tools ~/tools && \
+    mv ~/cmdline-tools ~/latest && \
+    mkdir ~/cmdline-tools && \
+    mv ~/latest ~/cmdline-tools && \
     chmod a+x -R $ANDROID_HOME && \
     chown -R root:root $ANDROID_HOME
 
-ENV PATH=$PATH:/root/tools/bin
+ENV PATH=$PATH:/root/cmdline-tools/latest/bin
 
 # https://askubuntu.com/questions/885658/android-sdk-repositories-cfg-could-not-be-loaded
 RUN mkdir -p ~/.android && \

@@ -29,4 +29,4 @@ jobs:
           dockerfile: Appium/Dockerfile
           username: ${{ env.username }}
           password: ${{ env.password }}
-          buildArgs: SDK_VERSION=31.0.0, ANDROID_PLATFORM_VERSION=android-31, APPIUM_VERSION=1.22.0, ATD_VERSION=1.2, ANDROID_BUILD_TOOLS_VERSION=30.0.3
+          buildArgs: SDK_VERSION=31.0.0, ANDROID_PLATFORM_VERSION=android-31, APPIUM_VERSION=1.22.3, ATD_VERSION=1.2, ANDROID_BUILD_TOOLS_VERSION=30.0.3

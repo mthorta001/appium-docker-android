@@ -110,8 +110,7 @@ RUN mkdir ~/tmp && \
 ARG APPIUM_VERSION=1.7.0-beta
 ENV APPIUM_VERSION=$APPIUM_VERSION
 
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash && \
-    apt-get install gcc g++ make && \
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
     npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \

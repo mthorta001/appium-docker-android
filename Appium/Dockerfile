@@ -117,6 +117,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash && \
     appium plugin install images && \
     appium plugin install relaxed-caps && \
     npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \
+    npm install -g npm && \
     exit 0 && \
     npm cache clean && \
     apt-get remove --purge -y npm && \

@@ -110,14 +110,14 @@ RUN mkdir ~/tmp && \
 ARG APPIUM_VERSION=1.7.0-beta
 ENV APPIUM_VERSION=$APPIUM_VERSION
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash && \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
     appium driver install uiautomator2 && \
     appium plugin install images && \
     appium plugin install relaxed-caps && \
     npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \
-    npm install -g npm && \
+    npm install -g npm@8 && \
     exit 0 && \
     npm cache clean && \
     apt-get remove --purge -y npm && \

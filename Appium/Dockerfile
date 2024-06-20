@@ -113,9 +113,9 @@ ENV APPIUM_VERSION=$APPIUM_VERSION
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
-    appium driver install uiautomator2 && \
-    appium plugin install images && \
-    appium plugin install relaxed-caps && \
+    appium driver install uiautomator2@2.29.3 && \
+    appium plugin install images@2.1.2 && \
+    appium plugin install relaxed-caps@1.0.5 && \
     npm i -g npm@6 && \
     npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \
     npm install -g npm@8 && \

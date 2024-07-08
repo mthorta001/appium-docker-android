@@ -116,7 +116,7 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash && \
     appium driver install uiautomator2@3.6.1 && \
     appium plugin install images@2.1.2 && \
     appium plugin install relaxed-caps@1.0.6 && \
-    npm i -g opencv4nodejs --unsafe-perm=true --allow-root && \
+    npm i -g @u4/opencv4nodejs@6.5.2 --unsafe-perm=true --allow-root && \
     exit 0 && \
     npm cache clean && \
     apt-get remove --purge -y npm && \

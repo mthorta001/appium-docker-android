@@ -110,7 +110,7 @@ RUN mkdir ~/tmp && \
 ARG APPIUM_VERSION=1.7.0-beta
 ENV APPIUM_VERSION=$APPIUM_VERSION
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash && \
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
     appium driver install uiautomator2@3.6.1 && \
